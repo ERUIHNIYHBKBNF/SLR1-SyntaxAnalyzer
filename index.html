@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>simple C compiler</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./lexicalAnalizer.js" type="text/javascript"></script>
+  <script src="./syntaxAnalizer.js" type="text/javascript"></script>
+  <script src="./index.js" type="text/javascript"></script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    table {
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+    }
+
+    th, td {
+      min-width: 30px;
+      padding: 0 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="h-screen relative overflow-hidden">
+    <div class="w-screen bg-sky-500 flex justify-center items-center text-white" style="height: 5%;">
+      A Simple C Compiler
+    </div>
+    <div class="bg-sky-100 flex" style="height: 95%;">
+      <div class="h-full w-1/2 bg-sky-200 flex flex-col">
+        <div class="w-full h-1/2">
+          <textarea id="code" class="w-full h-5/6 pl-1 pt-1" placeholder="Enter your C code here">
+            // This is a note.
+            int main(int a, int b) {
+              int res;
+              res = a + b;
+              int d = a;
+              /*
+              if (a < 0){
+                  res = -a;
+              }
+              else{
+                  while (b > 0){
+                      b = b-1;
+                  }
+                  res = 0;
+              }
+              */
+            }  
+          </textarea>
+          <div class="w-full h-1/6">
+            <button
+              class="w-32 h-10 bg-sky-500 hover:bg-sky-400 float-right mr-2 mt-1 text-white font-bold py-2 px-4 rounded"
+              onclick="startAnalysis()">
+              Compile
+            </button>
+          </div>
+        </div>
+        <div class="w-full h-1/2 bg-red-100 relative overflow-auto px-2 py-1">
+          <h1>Genernated Tokens:</h1>
+          <p id="tokens" class="break-normal">
+
+          </p>
+          <h1>Syntax Analysis Steps:</h1>
+          <p id="syntaxAnalysis">
+
+          </p>
+        </div>
+      </div>
+      <div class="h-full w-1/2 overflow-auto">
+        <div class="w-full px-2 py-1">
+          <h1>Defination of G:</h1>
+          <p id="G" class="w-full text-gray-500">
+
+          </p>
+        </div>
+        <div class="w-full px-2 py-1">
+          <h1>FIRST Set:</h1>
+          <p id="FIRST">
+
+          </p>
+        </div>
+        <div class="w-full px-2 py-1">
+          <h1>FOLLOW Set:</h1>
+          <p id="FOLLOW">
+
+          </p>
+        </div>
+        <div class="w-full px-2 py-1">
+          <p id="ACTION">
+
+          </p>
+        </div>
+        <div class="w-full px-2 py-1">
+          <p id="GOTO">
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    renderPage();
+  </script>
+</body>
+
+
+</html>
