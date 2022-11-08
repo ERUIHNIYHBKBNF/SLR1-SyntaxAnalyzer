@@ -55,7 +55,6 @@ function getFirst(G) {
       }
     });
   }
-  // console.log(FIRST);
   return FIRST;
 }
 
@@ -322,7 +321,7 @@ function syntaxAnalysis(tokens, ACTION, GOTO) {
       token = token.value;
     }
     const action = ACTION[token][status];
-    console.log(`Step${step - 1}`, token, status, action, statusStack);
+    // console.log(`Step${step - 1}`, token, status, action, statusStack);
     if (action.type === '') {
       alert('Syntax error!');
       html = '';
